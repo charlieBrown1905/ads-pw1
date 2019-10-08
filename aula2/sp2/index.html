@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        html, body {
+            height: 100%;            
+        }
+        #conteudo {
+            margin: auto;
+            width: 300px;
+            height: 100%;
+            border: 1px solid red;
+        }
+
+        #mensagens {
+            height: calc(100% - 230px);
+        }
+
+        #texto textarea {
+            width: 100%;
+            height: 200px;
+        }
+
+        #texto button {
+            height: 25px;
+            width: 60px;
+            float: right;
+            margin-right: 3px;
+        }
+
+        #mensagens .msg {
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid black;
+            background: #E1FFC7;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #mensagens .msg span{
+            display: block;
+            text-align: right;          
+        }
+
+        #mensagens .msg .txt{
+            font-size: 18px;
+        }
+        
+        #mensagens .msg .info{
+            font-size: 10px;
+        }
+    </style>
+
+    <script>
+        function vincularEventos() {
+            var btn = document.getElementById("btn");
+            btn.onclick = manipularClickBotao;
+        }
+
+        function manipularClickBotao() {
+            var txt = document.getElementById("txt");
+
+            var msg = txt.value;
+            if(msg.length === 0) {
+                return;
+            }
+
+            var divMsg = document.createElement("div");
+            divMsg.innerHTML = `
+                <div class="msg">
+                    <span class="txt">${msg}</span>
+                    <span class="info">${new Date().toLocaleDateString("pt-BR")}</span>
+                </div>`;
+            
+            var mensagens = document.getElementById("mensagens");
+
+            mensagens.appendChild(divMsg);
+
+            txt.value = null;
+
+            txt.focus();
+        }
+
+        window.onload = function() {
+            vincularEventos();
+        };
+    </script>
+</head>
+<body>
+    <div id="conteudo">
+        <div id="mensagens">
+           
+        </div>
+        <div id="texto">
+            <textarea id="txt" id="" cols="30" rows="10"></textarea>
+            <button id="btn">Enviar</button>
+        </div>
+    </div>
+</body>
+</html>

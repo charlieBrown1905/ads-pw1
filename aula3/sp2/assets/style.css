@@ -1,0 +1,25 @@
+html, body, .container {
+    height: 100%;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .container > div {
+      padding: 10px;
+  }
+
+  .conteudo {
+    width: calc(100% - 200px);
+    float: left;
+  }
+
+  .adjacente {
+      width: 200px;
+      float: left;
+  }
